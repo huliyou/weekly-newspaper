@@ -5,7 +5,9 @@
 import React, { PropTypes } from 'react';
 import Immutable from 'immutable';
 import { List, ListItem, Subheader, TextField } from 'material-ui';
+import ConnectStore from '../../utils/redux/ConnectStore';
 
+@ConnectStore({})
 class Inspect extends React.Component {
   static propTypes = {
     components: PropTypes.instanceOf(Immutable.List),
@@ -16,15 +18,15 @@ class Inspect extends React.Component {
       const views = [];
       const componentProps = this.props.components.get(this.props.selectedComponentIndex);
       if (componentProps !== undefined) {
-        console.log(componentProps.get('props'));
         Object.keys(componentProps.get('props')).map((key, index) => {
-          console.warn(key, index);
           views.push(
             <ListItem key={index}>
               <TextField
                 style={{ width: '100%' }}
                 floatingLabelText={key}
-                value={componentProps.get('props')[key]}
+                {...this.props.bindReducer(
+                  `StoryBoardReducer/components/${this.props.selectedComponentIndex}/props/${key}`
+                )}
               />
             </ListItem>
           );
