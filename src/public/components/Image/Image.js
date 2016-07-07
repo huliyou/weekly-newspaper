@@ -16,7 +16,7 @@ export default class Image extends React.Component {
   };
   render() {
     return (
-      <img {...this.props} style={{ ...styles }} />
+      <img {...this.props} style={[{ ...styles }, {height: this.props.height}]} />
     );
   }
 }

@@ -30,7 +30,7 @@ class StoryBoard extends React.Component {
           selectedComponentIndex={this.props.selectedComponentIndex}
           onClick={() => this.props.dispatch(StoryBoardAction.selectComponent(index))}
         >
-          <Com {...component.get('props')} />
+          <Com {...component.get('props').toJS()} />
         </ComponentCell>
       );
     });

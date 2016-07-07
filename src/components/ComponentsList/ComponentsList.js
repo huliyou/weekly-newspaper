@@ -6,6 +6,7 @@ import React, { PropTypes } from 'react';
 import { List, ListItem, Subheader, Divider } from 'material-ui';
 import * as StoryBoardAction from '../../actions/StoryBoardAction';
 
+
 import PureComponent from '../../utils/decorators/PureComponent';
 
 @PureComponent
